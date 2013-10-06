@@ -5,7 +5,6 @@
 *.pydevproject
 .project
 .metadata
-bin/
 tmp/
 *.tmp
 *.bak
@@ -46,12 +45,14 @@ local.properties
 [Rr]elease/
 x64/
 build/
+out/
 [Oo]bj/
 
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
 
+*.exe
 *_i.c
 *_p.c
 *.ilk
