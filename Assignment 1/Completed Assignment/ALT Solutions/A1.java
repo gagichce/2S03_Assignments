@@ -2,7 +2,7 @@
 //1224692
 //October 5th 2013
 
-//Solution to A1
+//Alternate (Bonus) Solution to A1
 package se2s03;
 
 public class A1 {

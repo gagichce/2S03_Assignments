@@ -1,3 +1,8 @@
+//Colin Gagich
+//1224692
+//October 5th 2013
+
+//Solution to A2
 package se2s03;
 
 public class A2 {
