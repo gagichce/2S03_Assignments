@@ -7,23 +7,6 @@ package se2s03;
 
 public class A1 {
     public int cases(int v, int u, int w) {
-    	if (v <=3){
-    		if (u <=-5){
-    			if(w <= 12)
-        			return 7;
-        		return 9;
-        	}
-    		if (w <=4)
-    			return 10;
-    		return 1;
-    	}
-    	if ( w <=2){
-    		if (u<=9)
-    			return 6;
-    		return 3;	
-		}
-    	if(u <=-6)
-			return 5;
-		return 2;
+    	return (v <=3) ? ((u<=-5) ? ((w <=12) ? 7: 9) : ((w <=4) ? 10:1)) : ((w <=2) ? ((u<=9)?6:3) : ((u <=-6) ? 5:2));
     } 
 }
