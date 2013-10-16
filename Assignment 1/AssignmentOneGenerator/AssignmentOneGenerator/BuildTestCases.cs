@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AssignmentOneGenerator
 {
+    /// <summary>
+    /// handles building output for the test case files
+    /// </summary>
     class BuildTestCasesA1
     {
         Dictionary<string, Interval> Intervals;
@@ -19,6 +22,12 @@ namespace AssignmentOneGenerator
             Intervals = Ints;
             ArbNums = Arbs;
         }
+
+        /// <summary>
+        /// since the return value of each test case is naturally arbitrary, as in the only important part is that some of the test cases return the same value. This links them together.
+        /// </summary>
+        /// <param name="minTestCases"></param>
+        /// <returns></returns>
         public List<string> GenerateTestDataA1(int minTestCases)
         {
             List<string> A1TestOutput = new List<string>();
@@ -40,6 +49,12 @@ namespace AssignmentOneGenerator
             } while (!Done(counter, minTestCases));
             return A1TestOutput;
         }
+        /// <summary>
+        /// little helper function to determine if enough test cases have been generated yet. 
+        /// </summary>
+        /// <param name="thisCounter">the number of test cases that have already been generated</param>
+        /// <param name="minCases"> the minimum number of cases required for each return value</param>
+        /// <returns></returns>
         bool Done(Dictionary<int, int> thisCounter, int minCases)
         {
             foreach (KeyValuePair<int, int> thisPair in thisCounter)

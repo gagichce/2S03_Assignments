@@ -7,6 +7,9 @@ using System.IO;
 
 namespace AssignmentOneGenerator
 {
+    /// <summary>
+    /// class that handles everything IO. Also handles some of the combining and parsing (ugly)
+    /// </summary>
     static class ReadWrite
     {
         public static List<string> GetStudentNumbers()
@@ -72,12 +75,19 @@ namespace AssignmentOneGenerator
             {
                 listToWrite.Add(file[i]);
             }
+            //the 3 is the minimum number of test cases to be generated. 
+            //3 was chosen because in the original problem each return value had 3 or more test cases for its interval.
             listToWrite.AddRange(theseTestCases.GenerateTestDataA1(3));
             listToWrite.Add("\t}\n}");
 
             File.WriteAllLines("out\\" + student + "\\A1Test.java", listToWrite);
         }
 
+        //DISCLAIMER, since the nature of this problem is expotential, 
+        //it is almost too easy to get really large numbers really fast.
+        //in truth, you do not need 30+ test cases to figure out a sequence, 
+        //5 and maybe 10 at most is more than you would need.
+        //So what I am saying is that it is more than possible, infact VERY possible that the 30th or so value in the sequence is an overflowed value.
         public static void CreateSolutionA2(string student, int numTestCases, int max)
         {
             string[] file = File.ReadAllLines(@"se2s03\\A2.java");
@@ -100,6 +110,9 @@ namespace AssignmentOneGenerator
                 outBuffer.Add(file[i]);
             }
 
+            //this one works differently, in the original test cases there were 31 test cases. 
+            //I suspect this is because it involves 2^n mathematically and if n is any larger than 30 people would start running into overflow issues.
+            //I suspect this because I did myself. haha.
             outBuffer.AddRange(thisBuilder.GenerateTestDataA2(thisTestCase, numTestCases, max));
             outBuffer.Add("\t}\n}");
             outBuffer.Add(thisTestCase.A0 + " " + thisTestCase.A1 + " " + thisTestCase.AN + " " + thisTestCase.X + " " + thisTestCase.Y);

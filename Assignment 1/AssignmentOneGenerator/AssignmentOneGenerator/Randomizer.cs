@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 namespace AssignmentOneGenerator
 {
     /// <summary>
-    /// Handles all things to be randomized.
+    /// Handles all things to be randomized. 
     /// </summary>
     static class Randomizer
     {
+        //make sure your random objects are static! otherwise your randoms will be static (bad news, maybe even slightly ironic)
         static Random randy = new Random();
         public static List<string> PickEight(int min, int max)
         {

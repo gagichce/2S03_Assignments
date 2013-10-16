@@ -13,7 +13,8 @@ namespace AssignmentOneGenerator
         /// </summary>
         /// <param name="par1"></param>
         /// <param name="par2"></param>
-        /// //good ol' randy is the best
+        /// 
+        //good ol' randy is the best
         static Random randy = new Random();
         public static Interval GetInterval(int minInt, int maxInt)
         {
@@ -31,6 +32,9 @@ namespace AssignmentOneGenerator
         }
     }
 
+    /// <summary>
+    /// builds a set of randomly generated intervals, where the next interval is based on the previous.
+    /// </summary>
     class BuildIntervals
     {
         public static Dictionary<string, Interval> BuildInterval(int min, int max)

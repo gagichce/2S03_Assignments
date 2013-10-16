@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AssignmentOneGenerator
 {
+    /// <summary>
+    /// Represents a 'breakpoint' in the code. Intervals are usually used for making a sorting based decision, where a decision is made based on the upper/lower value
+    /// </summary>
     class Interval
     {
         public int L;

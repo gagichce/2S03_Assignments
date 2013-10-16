@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+//these two classes will model each test case generated for each solution.
 namespace AssignmentOneGenerator
 {
     class TestCaseA1

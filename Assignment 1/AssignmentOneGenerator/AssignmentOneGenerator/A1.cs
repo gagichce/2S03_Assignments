@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace AssignmentOneGenerator
 {
+    /// <summary>
+    /// reproduces the solution A1. Takes testcases and determined its return type.
+    /// </summary>
     class A1
     {
         public int test(TestCaseA1 thisCase, Dictionary<string, Interval> Intervals, List<string> ArbNums)
