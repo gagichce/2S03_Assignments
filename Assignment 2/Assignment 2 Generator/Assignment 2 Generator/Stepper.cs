@@ -29,12 +29,27 @@ namespace Assignment_2_Generator
             step2 = thisRegex.Replace(step2, "\n");
             thisRegex = new Regex(@"\s+i\s.+\n");
             step2 = thisRegex.Replace(step2, "\n");
+            thisRegex = new Regex(@"\n.+(i;)");
+            step2 = thisRegex.Replace(step2, "");
             return step2;
         }
 
-        public static string ThreeToFour()
+        public static string ThreeToFour(string step3)
         {
-            return "";
+            Regex thisRegex = new Regex(@"(aa|bb|cc)\s=\s([(].+?[)])");
+            foreach (Match thisMatch in thisRegex.Matches(step3))
+            {
+                Regex secondRegex = new Regex(@"(\(|[+]\s)(" + thisMatch.Groups[1].Value + @")(\s|\)|;)");
+                Match matchInMatch = secondRegex.Match(step3);
+                step3 = secondRegex.Replace(step3, isNotBracket(matchInMatch.Groups[1].Value) + thisMatch.Groups[2].Value + isNotBracket(matchInMatch.Groups[3].Value));
+                step3 = (new Regex(@"\s{2,}(" + thisMatch.Groups[1].Value + ").+")).Replace(step3, "");
+            }
+            return step3;
+        }
+
+        private static string isNotBracket(string hasBracket)
+        {
+            return (hasBracket == ")" || hasBracket == "(") ? "" : hasBracket;
         }
     }
 }
