@@ -79,7 +79,6 @@ namespace AssignmentOneGenerator
             //3 was chosen because in the original problem each return value had 3 or more test cases for its interval.
             listToWrite.AddRange(theseTestCases.GenerateTestDataA1(3));
             listToWrite.Add("\t}\n}");
-
             File.WriteAllLines("out\\" + student + "\\A1Test.java", listToWrite);
         }
 
