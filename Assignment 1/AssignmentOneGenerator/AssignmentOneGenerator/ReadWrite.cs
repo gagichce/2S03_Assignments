@@ -1,4 +1,8 @@
-﻿using System;
+﻿//Colin Gagich
+//1224692
+//October 5th 2013
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
