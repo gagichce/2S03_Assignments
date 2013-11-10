@@ -1,6 +1,6 @@
 public class mainRun {
 
-	//I hate warnings for stupid things.
+	//I hate warnings for stupid things. If I want it not use it, let me not use it.
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 

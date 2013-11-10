@@ -2,7 +2,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Member;
 
 public class Matrix3x3flat {
-
 	long Row1Col1;
 	long Row1Col2;
 	long Row1Col3;
@@ -13,6 +12,7 @@ public class Matrix3x3flat {
 	long Row3Col2;
 	long Row3Col3;
 
+	
 	public Matrix3x3flat(long[] inArray) {
 
 		// make sure the input array has 9 and only 9 elements
