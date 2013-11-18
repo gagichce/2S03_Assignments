@@ -1,16 +1,16 @@
 //Colin Gagich 1224692 gagichce@mcmaster.ca
 //November 2013
 //2S03
-//Matrix Array represented as rows of column
+//Matrix Array represented columns of rows
 //Determinate method adapted from http://en.wikipedia.org/wiki/Minor_(linear_algebra)#Cofactor_expansion_of_the_determinant
 import java.lang.reflect.Field;
 
-public class Matrix3x3rc {
-	RowX3 Row1;
-	RowX3 Row2;
-	RowX3 Row3;
+public class Matrix3x3cr {
+	ColumnX3 Col1;
+	ColumnX3 Col2;
+	ColumnX3 Col3;
 
-	public Matrix3x3rc(Long[] inArray) {
+	public Matrix3x3cr(Long[] inArray) {
 
 		// make sure the input array has 9 and only 9 elements
 		if (inArray.length != 9) {
@@ -23,8 +23,8 @@ public class Matrix3x3rc {
 			// must be put in try catch or else eclipse gets sad :(
 			try {
 				// set that field
-				theseFields[i].set(this, new RowX3(new Long[] { inArray[i * 3],
-						inArray[i * 3 + 1], inArray[i * 3 + 2] }));
+				theseFields[i].set(this, new ColumnX3(new Long[] { inArray[i],
+						inArray[3 + i], inArray[2 * 3 + i] }));
 			} catch (IllegalArgumentException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -37,14 +37,16 @@ public class Matrix3x3rc {
 
 	public Long determinate() {
 
-		return ((Long) Row1.Col1)
-				* (((Long) Row2.Col2) * ((Long) Row3.Col3) - ((Long) Row2.Col3)
-						* ((Long) Row3.Col2))
-				- ((Long) Row2.Col1)
-				* (((Long) Row1.Col2) * ((Long) Row3.Col3) - ((Long) Row1.Col3)
-						* ((Long) Row3.Col2))
-				+ ((Long) Row3.Col1)
-				* (((Long) Row1.Col2) * ((Long) Row2.Col3) - ((Long) Row1.Col3)
-						* ((Long) Row2.Col2));
+		// not the prettiest thing because I store everything as an object.
+		// oh well
+		return ((Long) Col1.Row1)
+				* (((Long) Col2.Row2) * ((Long) Col3.Row3) - ((Long) Col3.Row2)
+						* ((Long) Col2.Row3))
+				- ((Long) Col1.Row2)
+				* (((Long) Col2.Row1) * ((Long) Col3.Row3) - ((Long) Col3.Row1)
+						* ((Long) Col2.Row3))
+				+ ((Long) Col1.Row3)
+				* (((Long) Col2.Row1) * ((Long) Col3.Row2) - ((Long) Col3.Row1)
+						* ((Long) Col2.Row2));
 	}
 }
