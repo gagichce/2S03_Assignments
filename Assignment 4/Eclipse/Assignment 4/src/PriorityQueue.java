@@ -1,18 +1,20 @@
+import java.io.PrintStream;
+
 public class PriorityQueue {
+	// turns out the end of the list doesn't really matter here
+	// because it is never referenced, things are never really added to the tail
+	// unless they belong there as this is a priority queue.
 	private PList head;
-	private PList tail;
 	private final PList maxValue = new PList(Integer.MAX_VALUE, 'ÿ');
 
 	public PriorityQueue() {
 
 		this.head = null;
-		this.tail = null;
 	}
 
 	public PriorityQueue(int priority, char c) {
 
 		this.head = new PList(priority, c);
-		this.tail = this.head;
 	}
 
 	public char next() throws Exception {
@@ -24,37 +26,36 @@ public class PriorityQueue {
 
 	public void deleteItem() {
 
-		if (this.head.equals(this.tail)) {
-			this.head = null;
-			this.tail = null;
-		} else {
-			PList oldHead = this.head;
+		if (!isEmpty()) {
+			PList temp = this.head;
 			this.head = this.head.getNext();
-			oldHead.setNext(null);
+			// dereference just incase of mem leaks, not 100% sure if this is an
+			// issue but just making sure
+			temp.setNext(null);
 		}
 	}
 
 	public void insertItem(int priority, char c) {
 
-		PList toAdd = new PList(priority, c);
-		if (!isEmpty()) {
-			maxValue.setNext(this.head);
-			this.head = maxValue;
-			insertItem(toAdd, this.head);
-			this.head = this.head.getNext();
-			maxValue.setNext(null);
-		} else {
-			this.head = toAdd;
-			this.tail = toAdd;
-		}
-
+		this.maxValue.setNext(this.head);
+		this.head = this.maxValue;
+		insertSort(new PList(priority, c), this.head);
+		this.head = this.head.getNext();
+		// not really needed but just incase. could free up memory maybe, in the
+		// right case where the reference could point to something that is no
+		// longer needed.
+		this.maxValue.setNext(null);
 	}
 
-	private void insertItem(PList toAdd, PList location) {
+	// I do my sorting this way because it allows me to not
+	// worry about the head case, where the head is replaced.
+	// adding the max possible value to the top before sorting
+	// and then removing it after is a dirty way of fixing this,
+	// but it will always work.
+	private void insertSort(PList toAdd, PList location) {
 
 		if (location.getNext() == null) {
 			location.setNext(toAdd);
-			this.tail = toAdd;
 		} else {
 			if (toAdd.getPriority() > location.getNext().getPriority()) {
 				toAdd.setNext(location.getNext());
@@ -64,30 +65,27 @@ public class PriorityQueue {
 					toAdd.setNext(location.getNext());
 					location.setNext(toAdd);
 				} else
-					insertItem(toAdd, location.getNext());
-			}
-			else 
-				insertItem(toAdd, location.getNext());
+					insertSort(toAdd, location.getNext());
+			} else
+				insertSort(toAdd, location.getNext());
 		}
 	}
 
 	public boolean isEmpty() {
 
-		return this.head == null && this.tail == null;
+		return this.head == null;
 	}
 
-	public void show() {
+	public void show(PrintStream p) {
 
 		if (!isEmpty()) {
-			PList current = this.head;
+			PList stepper = this.head;
 			do {
-				System.out.println("Priority: " + current.getPriority()
-						+ " Value: " + current.getValue());
-				current = current.getNext();
-			} while (current != null);
-		} else {
-			System.out.println("Queue is empty");
-
-		}
+				p.println("Priority: " + stepper.getPriority() + " Value: "
+						+ stepper.getValue());
+				stepper = stepper.getNext();
+			} while (stepper != null);
+		} else
+			p.println("Queue is empty");
 	}
 }

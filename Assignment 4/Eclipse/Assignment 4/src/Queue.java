@@ -1,40 +1,64 @@
-public class Queue {
-	private SnocList head;
+import java.io.PrintStream;
+
+public class Queue implements QueueInterface {
 	private SnocList tail;
 
 	public Queue() {
 
-		head = null;
 		tail = null;
 	}
 
 	public char peek() throws Exception {
 
-		if (isEmpty()) {
+		if (isEmpty())
 			throw new Exception();
-		}
-		return head.value;
+
+		return peekHelper(this.tail);
 	}
 
-	public void dequeue() {
-
-		if (!isEmpty())
-			head = head.next;
+	private char peekHelper(SnocList sl){
+		if (sl.next==null){
+			return sl.value;
+		}
+		return peekHelper(sl.next);
 	}
 	
-	public void enqueue(char c){
-		if(isEmpty()){
-			head = new SnocList(c);
-			tail = head;
+	public void dequeue() {
+
+		if (!isEmpty()) {
+			this.tail = dequeueHelper(this.tail);
 		}
-		else{
-			tail.next = new SnocList(c);
-			tail = tail.next;
+	}
+
+	private SnocList dequeueHelper(SnocList sl) {
+
+		if (sl.next == null) {
+			return null;
 		}
+		sl.next = dequeueHelper(sl.next);
+		return sl;
+	}
+
+	public void enqueue(char c) {
+
+		this.tail = new SnocList(c, this.tail);
 	}
 
 	public boolean isEmpty() {
 
-		return head == null && tail == null;
+		return this.tail == null;
+	}
+
+	public void show(PrintStream p) {
+
+		p.println(showStepper(this.tail));
+	}
+
+	private String showStepper(SnocList sl) {
+
+		if (sl == null) {
+			return "";
+		}
+		return showStepper(sl.next) + sl.value + " ";
 	}
 }

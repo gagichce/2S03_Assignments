@@ -8,22 +8,29 @@ public class mainRun {
 		myStack.push('d');
 		myStack.push('e');
 		myStack.push('f');
-		myStack.pop();
+		myStack.show(System.out);
 		Queue myQueue = new Queue();
 		myQueue.enqueue('c');
 		myQueue.enqueue('e');
 		myQueue.enqueue('f');
-		myQueue.dequeue();
+		myQueue.enqueue('f');
+		myQueue.enqueue('f');
+		myQueue.enqueue('f');
+		myQueue.enqueue('f');
 		System.out.println(myQueue.peek());
-		System.out.println(myStack.isEmpty());
+		myQueue.enqueue('f');
+		myQueue.enqueue('f');
+		myQueue.enqueue('f');
+		myQueue.dequeue();
 		
+		myQueue.show(System.out);
 		PriorityQueue Pq = new PriorityQueue();
 		Pq.insertItem(3, 'g');
 		Pq.insertItem(Integer.MAX_VALUE, 'ÿ');
 		
 		
 		Pq.insertItem(4, 'g');
-		
+		SnocList myScno = new SnocList('a', new SnocList('p', new SnocList('p',null)));
 		
 		Pq.insertItem(4, 'h');
 		Pq.insertItem(Integer.MAX_VALUE, 'þ');
@@ -32,7 +39,7 @@ public class mainRun {
 		Pq.insertItem(4, 'f');
 		Pq.insertItem(6, 'g');
 
-		Pq.show();
+		Pq.show(System.out);
 		System.out.println(myStack.isEmpty());
 	}
 

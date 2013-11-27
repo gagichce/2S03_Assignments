@@ -1,6 +1,7 @@
+import java.io.PrintStream;
 import java.util.*;
 
-public class ArrayListStack {
+public class ArrayListStack implements StackInterface{
 	private ArrayList<Character> myArrayList;
 
 	public ArrayListStack() {
@@ -34,5 +35,13 @@ public class ArrayListStack {
 	public void push(char c) {
 
 		myArrayList.add(c);
+	}
+
+	public void show(PrintStream p) {
+
+		for(char myChar : myArrayList){
+			p.print(myChar + " ");
+		}
+		p.println("");
 	}
 }
