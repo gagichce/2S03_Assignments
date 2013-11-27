@@ -1,6 +1,6 @@
 import java.io.PrintStream;
 
-public class PriorityQueue {
+public class PriorityQueue implements PriQueue{
 	// turns out the end of the list doesn't really matter here
 	// because it is never referenced, things are never really added to the tail
 	// unless they belong there as this is a priority queue.
