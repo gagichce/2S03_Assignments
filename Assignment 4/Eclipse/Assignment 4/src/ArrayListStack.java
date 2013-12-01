@@ -14,10 +14,10 @@ public class ArrayListStack implements StackInterface{
 		myArrayList = new ArrayList<Character>(c);
 	}
 
-	public char top() throws Exception {
+	public char top() throws ObjectIsEmpty {
 
 		if (isEmpty())
-			throw new Exception();
+			throw new ObjectIsEmpty("Stack is empty!");
 		return myArrayList.get(myArrayList.size() - 1 );
 	}
 
@@ -28,7 +28,7 @@ public class ArrayListStack implements StackInterface{
 
 	public void pop() {
 
-		if (isEmpty())
+		if (!isEmpty())
 			myArrayList.remove(myArrayList.size() - 1);
 	}
 
@@ -43,5 +43,12 @@ public class ArrayListStack implements StackInterface{
 			p.print(myChar + " ");
 		}
 		p.println("");
+	}
+	
+	public void show(StringBuffer sb){
+		for(char myChar : myArrayList){
+			sb.append(" " + myChar);
+		}
+		sb.reverse();
 	}
 }

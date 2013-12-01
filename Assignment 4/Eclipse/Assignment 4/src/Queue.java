@@ -8,10 +8,10 @@ public class Queue implements QueueInterface {
 		tail = null;
 	}
 
-	public char peek() throws Exception {
+	public char peek() throws ObjectIsEmpty {
 
 		if (isEmpty())
-			throw new Exception();
+			throw new ObjectIsEmpty("Queue was empty!");
 
 		return peekHelper(this.tail);
 	}
@@ -54,6 +54,10 @@ public class Queue implements QueueInterface {
 		p.println(showStepper(this.tail));
 	}
 
+	public void show(StringBuffer sb){
+		sb.append(showStepper(this.tail));
+	}
+	
 	private String showStepper(SnocList sl) {
 
 		if (sl == null) {

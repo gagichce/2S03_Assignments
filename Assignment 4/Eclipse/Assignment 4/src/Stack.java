@@ -13,10 +13,10 @@ public class Stack implements StackInterface {
 		top = new List(c);
 	}
 
-	public char top() throws Exception {
+	public char top() throws ObjectIsEmpty {
 
 		if (isEmpty())
-			throw new Exception();
+			throw new ObjectIsEmpty("Stack is empty!");
 		return top.getValue();
 	}
 
@@ -48,6 +48,20 @@ public class Stack implements StackInterface {
 		}
 		else{
 			p.println("Stack is empty");
+		}
+	}
+	
+	public void show(StringBuffer sb) {
+
+		if (!isEmpty()) {
+			List temp = this.top;
+			do {
+				sb.append(temp.getValue() + " ");
+				temp = temp.getNext();
+			} while (temp != null);
+		}
+		else{
+			sb.append("Stack is empty");
 		}
 	}
 }

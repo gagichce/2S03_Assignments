@@ -16,7 +16,6 @@ public class Stack<T> implements StackInterface<T> {
 
 	// it cannot guarantee that the next element in the list is of the same
 	// generic type. makes sense, it should be in this implementation though
-	@SuppressWarnings("unchecked")
 	@Override
 	public void pop() {
 

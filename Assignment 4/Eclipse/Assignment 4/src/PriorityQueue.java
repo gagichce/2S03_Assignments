@@ -5,7 +5,7 @@ public class PriorityQueue implements PriQueue{
 	// because it is never referenced, things are never really added to the tail
 	// unless they belong there as this is a priority queue.
 	private PList head;
-	private final PList maxValue = new PList(Integer.MAX_VALUE, 'ÿ');
+	private final PList maxValue = new PList(Integer.MAX_VALUE, Character.MAX_VALUE);
 
 	public PriorityQueue() {
 
@@ -17,10 +17,10 @@ public class PriorityQueue implements PriQueue{
 		this.head = new PList(priority, c);
 	}
 
-	public char next() throws Exception {
+	public char next() throws ObjectIsEmpty {
 
 		if (isEmpty())
-			throw new Exception();
+			throw new ObjectIsEmpty("PriQueue is empty!");
 		return head.getValue();
 	}
 
@@ -87,5 +87,18 @@ public class PriorityQueue implements PriQueue{
 			} while (stepper != null);
 		} else
 			p.println("Queue is empty");
+	}
+	
+	public void show(StringBuffer sb) {
+
+		if (!isEmpty()) {
+			PList stepper = this.head;
+			do {
+				sb.append("Priority: " + stepper.getPriority() + " Value: "
+						+ stepper.getValue() + " ");
+				stepper = stepper.getNext();
+			} while (stepper != null);
+		} else
+			sb.append("Queue is empty");
 	}
 }
