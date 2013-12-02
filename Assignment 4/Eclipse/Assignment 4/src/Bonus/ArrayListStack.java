@@ -3,30 +3,32 @@ package Bonus;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
-public class ArrayListStack<T> implements StackInterface<T>{
-	private ArrayList<T> stack; 
-	
-	public ArrayListStack(){
+public class ArrayListStack<T> implements StackInterface<T> {
+	private ArrayList<T> stack;
+
+	public ArrayListStack() {
+
 		stack = new ArrayList<T>();
 	}
-	
-	public ArrayListStack(T t){
+
+	public ArrayListStack(T t) {
+
 		stack = new ArrayList<T>();
 		stack.add(t);
 	}
-	
-	@Override
-	public T top() throws Exception {
 
-		if(isEmpty())
-			throw new Exception();
+	@Override
+	public T top() throws ObjectIsEmpty {
+
+		if (isEmpty())
+			throw new ObjectIsEmpty("Stack is empty!");
 		return stack.get(stack.size() - 1);
 	}
 
 	@Override
 	public void pop() {
 
-		if(isEmpty()){
+		if (!isEmpty()) {
 			stack.remove(stack.size() - 1);
 		}
 	}
@@ -47,10 +49,18 @@ public class ArrayListStack<T> implements StackInterface<T>{
 	public void show(PrintStream p) {
 
 		String myString = "";
-		for(T myT : this.stack){
+		for (T myT : this.stack) {
 			myString += myT + " ";
 		}
 		p.println(myString);
+	}
+
+	public void show(StringBuffer sb) {
+
+		for (T myT : this.stack) {
+			sb.append(" " + myT);
+		}
+		sb.reverse();
 	}
 
 }

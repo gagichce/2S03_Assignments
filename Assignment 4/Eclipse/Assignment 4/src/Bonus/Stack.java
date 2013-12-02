@@ -6,10 +6,10 @@ public class Stack<T> implements StackInterface<T> {
 	private List<T> top;
 
 	@Override
-	public T top() throws Exception {
+	public T top() throws ObjectIsEmpty {
 
 		if (isEmpty()) {
-			throw new Exception();
+			throw new ObjectIsEmpty("Stack is empty!");
 		}
 		return top.getValue();
 	}
@@ -19,9 +19,11 @@ public class Stack<T> implements StackInterface<T> {
 	@Override
 	public void pop() {
 
-		List<T> temp = this.top;
-		this.top = this.top.getNext();
-		temp.setNext(null);
+		if (!isEmpty()) {
+			List<T> temp = this.top;
+			this.top = this.top.getNext();
+			temp.setNext(null);
+		}
 	}
 
 	@Override
@@ -42,6 +44,11 @@ public class Stack<T> implements StackInterface<T> {
 	public void show(PrintStream p) {
 
 		p.println(showHelper(this.top));
+	}
+
+	public void show(StringBuffer sb) {
+
+		sb.append(showHelper(this.top));
 	}
 
 	private String showHelper(List<T> l) {

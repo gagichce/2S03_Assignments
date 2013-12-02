@@ -12,10 +12,10 @@ public class Queue<T> implements QueueInterface<T> {
 	}
 
 	@Override
-	public T peek() throws Exception {
+	public T peek() throws ObjectIsEmpty {
 
 		if (isEmpty()) {
-			throw new Exception();
+			throw new ObjectIsEmpty("Queue was empty!");
 		}
 		return peekHelper(this.tail);
 	}
@@ -61,6 +61,12 @@ public class Queue<T> implements QueueInterface<T> {
 	public void show(PrintStream p) {
 
 		p.println(showHelper(this.tail));
+
+	}
+	
+	public void show(StringBuffer sb) {
+
+		sb.append(showHelper(this.tail));
 
 	}
 

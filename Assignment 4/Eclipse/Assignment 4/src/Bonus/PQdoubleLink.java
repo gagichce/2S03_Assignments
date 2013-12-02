@@ -7,10 +7,10 @@ public class PQdoubleLink<T extends Comparable<T>> implements PriQueue<T> {
 	private PDList<T> head;
 
 	@Override
-	public T next() throws Exception {
+	public T next() throws ObjectIsEmpty {
 
 		if (isEmpty())
-			throw new Exception();
+			throw new ObjectIsEmpty("Queue was empty!");
 		return this.head.getValue();
 	}
 
@@ -19,7 +19,7 @@ public class PQdoubleLink<T extends Comparable<T>> implements PriQueue<T> {
 
 		PDList<T> toAdd = new PDList<T>(priority, c);
 		if (isEmpty()) {
-			insert(toAdd, toAdd, toAdd);
+			link(toAdd);
 			this.head = toAdd;
 		} else {
 			// head needs replacing case
@@ -47,10 +47,18 @@ public class PQdoubleLink<T extends Comparable<T>> implements PriQueue<T> {
 			insertHelper(toAdd, location.getNext());
 	}
 
+	// I theorized a method that would work for passing in anything, 1 item, 2
+	// items, 3 items..
+	// turned out they were all related
 	private void insert(PDList<T> prev, PDList<T> toInsert, PDList<T> next) {
 
 		doubleLink(prev, toInsert);
 		doubleLink(toInsert, next);
+	}
+
+	private void link(PDList<T> self) {
+
+		doubleLink(self, self);
 	}
 
 	private void doubleLink(PDList<T> left, PDList<T> right) {
@@ -98,7 +106,21 @@ public class PQdoubleLink<T extends Comparable<T>> implements PriQueue<T> {
 	@Override
 	public void show(PrintStream p) {
 
-		p.println("Priority: " + this.head.getPriority() + " Value: " + this.head.getValue().toString() + showHelper(this.head.getNext()));
+		p.println("Priority: " + this.head.getPriority() + " Value: "
+				+ this.head.getValue().toString()
+				+ showHelper(this.head.getNext()));
+
+	}
+
+	public void show(StringBuffer sb) {
+
+		if (!isEmpty()) {
+			sb.append("Priority: " + this.head.getPriority() + " Value: "
+					+ this.head.getValue().toString()
+					+ showHelper(this.head.getNext()));
+		}
+		else
+			sb.append("Queue is empty!");
 
 	}
 
@@ -106,7 +128,8 @@ public class PQdoubleLink<T extends Comparable<T>> implements PriQueue<T> {
 
 		if (isHead(toShow))
 			return "";
-		return "\nPriority: " + toShow.getPriority() + " Value: " + toShow.getValue().toString() + showHelper(toShow.getNext());
+		return " Priority: " + toShow.getPriority() + " Value: "
+				+ toShow.getValue().toString() + showHelper(toShow.getNext());
 	}
 
 }

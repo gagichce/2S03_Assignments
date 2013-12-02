@@ -20,18 +20,25 @@ public class mainTester {
 		myQueue.insertItem(1, 3);
 		myQueue.deleteItem();
 		// myQueue.show(System.out);
-		PQdoubleLink<Integer> tes = new PQdoubleLink<Integer>();
-		tes.insertItem(4, 3);
-		tes.insertItem(5, 3);
-		tes.insertItem(6, 3);
-		tes.insertItem(6, 90);
-		tes.insertItem(1, 3);
-		tes.insertItem(90, 3);
-		tes.insertItem(2, 3);
-		tes.insertItem(123, 123);
-		tes.insertItem(1, 3);
-		tes.insertItem(-1, 3);
-		tes.show(System.out);
+		PQdoubleLink<Boolean> myPqBool = new PQdoubleLink<Boolean>();
+		myPqBool.insertItem(4, true);
+		myPqBool.insertItem(2, true);
+		myPqBool.insertItem(78, true);
+		myPqBool.insertItem(234, true);
+		myPqBool.insertItem(3, true);
+		myPqBool.insertItem(234, true);
+		myPqBool.insertItem(786, true);
+		myPqBool.insertItem(234, true);
+		myPqBool.insertItem(2, true);
+		myPqBool.insertItem(234, true);
+		myPqBool.insertItem(1, false);
+		myPqBool.insertItem(2, false);
+		myPqBool.insertItem(3, false);
+		myPqBool.insertItem(78, false);
+		myPqBool.insertItem(3, false);
+		myPqBool.insertItem(4, false);
+		myPqBool.insertItem(41, false);
+		myPqBool.show(System.out);
 		System.out.println("");
 	}
 

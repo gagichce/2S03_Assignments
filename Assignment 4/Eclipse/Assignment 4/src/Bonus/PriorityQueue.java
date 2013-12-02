@@ -18,10 +18,10 @@ public class PriorityQueue<T extends Comparable<T>> implements PriQueue<T> {
 		this.head = new PList<T>(priority, c);
 	}
 
-	public T next() throws Exception {
+	public T next() throws ObjectIsEmpty {
 
 		if (isEmpty())
-			throw new Exception();
+			throw new ObjectIsEmpty("PriQueue is empty!");
 		return head.getValue();
 	}
 
@@ -90,5 +90,18 @@ public class PriorityQueue<T extends Comparable<T>> implements PriQueue<T> {
 			} while (stepper != null);
 		} else
 			p.println("Queue is empty");
+	}
+	
+	public void show(StringBuffer sb) {
+
+		if (!isEmpty()) {
+			PList<T> stepper = this.head;
+			do {
+				sb.append("Priority: " + stepper.getPriority() + " Value: "
+						+ stepper.getValue() + " ");
+				stepper = stepper.getNext();
+			} while (stepper != null);
+		} else
+			sb.append("Queue is empty");
 	}
 }
