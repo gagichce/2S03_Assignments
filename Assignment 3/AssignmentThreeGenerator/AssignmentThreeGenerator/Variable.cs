@@ -6,20 +6,25 @@ using System.Threading.Tasks;
 
 namespace AssignmentThreeGenerator
 {
-    class Variable
+    class Variable : Expression
     {
-        Type thisType;
-        string name;
 
         public Variable(string name, Type thisType)
         {
-            this.name = name;
-            this.thisType = thisType;
+            base.name = name;
+            base.thisType = thisType;
+        }
+
+        public Variable(string name, Type thisType, object value)
+            : base(value)
+        {
+            base.thisType = thisType;
+            base.name = name;
         }
 
         public override string ToString()
         {
-            return JavaHelper.javaTypes[thisType] + " " + this.name;
+            return ((base.getValue() == null) ? JavaHelper.javaTypes[base.thisType] : "") + this.name;
         }
     }
 }

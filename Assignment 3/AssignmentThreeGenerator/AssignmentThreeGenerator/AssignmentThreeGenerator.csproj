@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Add.cs" />
     <Compile Include="Assignment.cs" />
+    <Compile Include="Class.cs" />
     <Compile Include="Declaration.cs" />
     <Compile Include="Expression.cs" />
     <Compile Include="Function.cs" />

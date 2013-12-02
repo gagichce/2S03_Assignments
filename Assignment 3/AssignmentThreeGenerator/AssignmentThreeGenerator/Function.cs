@@ -8,23 +8,26 @@ namespace AssignmentThreeGenerator
 {
     class Function : Statement
     {
-        int accessType;
+        JavaHelper.AccessModifiers accessType;
         Type returnType;
         Return functionReturn;
         string name;
-        List<Declaration> myDecs = new List<Declaration>();
-        List<Statement> body = new List<Statement>();
+        private List<Declaration> myDecs = new List<Declaration>();
+        private List<Statement> body = new List<Statement>();
 
-        public Function(Type returnType, int accessType, string name)
+        public Function(Type returnType, JavaHelper.AccessModifiers accessModifer, string name)
         {
             this.name = name;
             this.returnType = returnType;
-            this.accessType = accessType;
+            this.accessType = accessModifer;
         }
 
         public void setReturn(Expression myExpression)
         {
-            functionReturn = new Return(myExpression);
+            if (returnType != typeof(void))
+            {
+                functionReturn = new Return(myExpression);
+            }
         }
 
         public void addStatement(Statement myStatment)
@@ -34,19 +37,33 @@ namespace AssignmentThreeGenerator
 
         public override string ToString()
         {
-            return "";
+            return buildFunctionParameters() + buildFunctionBody();
         }
 
-        private string buildFunctionDefinition()
+        private string buildFunctionParameters()
         {
             string myString = "";
-            myString += JavaHelper.getAccessModifier(accessType) + " " + name + "(";
+            myString += JavaHelper.getFunctionAccessModifier(accessType) + JavaHelper.javaTypes[returnType] + name + "(";
             foreach (Declaration myDeclaration in myDecs)
             {
-                myString += myDeclaration.ToString() + (myDeclaration.Equals(myDecs[myDecs.Count - 1])? "" : ",");
+                myString += myDeclaration.ToString() + (myDeclaration.Equals(myDecs[myDecs.Count - 1]) ? "" : ", ");
             }
             myString += ")\n";
             return myString;
+        }
+
+        private string buildFunctionBody()
+        {
+            string myString = "{\n";
+            foreach (Statement myStat in body)
+            {
+                myString += myStat.ToString() + ";\n";
+            }
+            if (returnType != typeof(void))
+            {
+                myString += functionReturn.ToString() + "\n";
+            }
+            return myString + "}";
         }
     }
 }
