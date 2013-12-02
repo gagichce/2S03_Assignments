@@ -43,7 +43,7 @@ namespace AssignmentThreeGenerator
             myString += JavaHelper.getAccessModifier(accessType) + " " + name + "(";
             foreach (Declaration myDeclaration in myDecs)
             {
-                myString += myDeclaration.ToString() + ",";
+                myString += myDeclaration.ToString() + (myDeclaration.Equals(myDecs[myDecs.Count - 1])? "" : ",");
             }
             myString += ")\n";
             return myString;

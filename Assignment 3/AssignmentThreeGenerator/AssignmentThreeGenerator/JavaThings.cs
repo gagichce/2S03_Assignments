@@ -13,7 +13,8 @@ namespace AssignmentThreeGenerator
         {
             {typeof(String), "String"}, 
             {typeof(int), "Integer"},
-            {typeof(char), "char"}
+            {typeof(char), "char"},
+            {typeof(void), "void"}
         };
 
         public static string getAccessModifier(int accessType)
