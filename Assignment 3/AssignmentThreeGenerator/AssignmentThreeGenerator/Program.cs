@@ -21,10 +21,11 @@ namespace AssignmentThreeGenerator
 
             //Console.WriteLine("MethodInfo.Invoke() Example\n");
             //Console.WriteLine("MagicClass.ItsMagic() returned: {0}", magicValue);
-            Variable<int> myString = new Variable<int>("this");
-            Expression<int> something = new Expression<int>(15);
-            Declaration<int> decs = new Declaration<int>(myString, null, 2);
-            Console.WriteLine(decs.ToString());
+
+            Variable myString = new Variable("this", typeof(int));
+            Expression something = new Expression(15);
+            Declaration decs = new Declaration(myString, null, 2);
+            Console.WriteLine(decs.ToString() + ";");
             Console.ReadKey(true);
         }
     }

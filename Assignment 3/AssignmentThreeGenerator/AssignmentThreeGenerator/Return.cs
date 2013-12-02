@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace AssignmentThreeGenerator
 {
-    class Return<T> : Statement
+    class Return : Statement
     {
-        Expression<T> toReturn;
+        Expression toReturn;
 
-        public Return(Expression<T> toReturn)
+        public Return(Expression toReturn)
         {
             this.toReturn = toReturn;
         }

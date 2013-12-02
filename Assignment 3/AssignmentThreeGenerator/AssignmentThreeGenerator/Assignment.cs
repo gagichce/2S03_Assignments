@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace AssignmentThreeGenerator
 {
-    class Assignment<T> : Statement
+    class Assignment : Statement
     {
-        Variable<T> toAssign;
-        Expression<T> value;
+        Variable toAssign;
+        Expression value;
 
-        public Assignment(Variable<T> toAssign, Expression<T> value)
+        public Assignment(Variable toAssign, Expression value)
         {
             this.toAssign = toAssign;
             this.value = value;

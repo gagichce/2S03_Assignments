@@ -46,6 +46,7 @@
     <Compile Include="Declaration.cs" />
     <Compile Include="Expression.cs" />
     <Compile Include="Function.cs" />
+    <Compile Include="JavaThings.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Return.cs" />

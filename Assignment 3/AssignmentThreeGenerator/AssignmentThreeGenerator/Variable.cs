@@ -6,27 +6,20 @@ using System.Threading.Tasks;
 
 namespace AssignmentThreeGenerator
 {
-    class Variable<T>
+    class Variable
     {
         Type thisType;
         string name;
 
-        private Dictionary<Type, string> javaTypes = new Dictionary<Type, string>() 
-        {
-            {typeof(String), "String"}, 
-            {typeof(int), "Integer"},
-            {typeof(char), "char"}
-        };
-
-        public Variable(string name)
+        public Variable(string name, Type thisType)
         {
             this.name = name;
-            this.thisType = typeof(T);
+            this.thisType = thisType;
         }
 
         public override string ToString()
         {
-            return javaTypes[thisType] + " " + this.name;
+            return JavaHelper.javaTypes[thisType] + " " + this.name;
         }
     }
 }

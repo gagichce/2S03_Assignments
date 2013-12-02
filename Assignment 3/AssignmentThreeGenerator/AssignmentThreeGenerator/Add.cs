@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace AssignmentThreeGenerator
 {
-    class Add<T>
+    class Add
     {
-        Expression<T> left;
-        Expression<T> right;
+        Expression left;
+        Expression right;
 
         public override string ToString()
         {

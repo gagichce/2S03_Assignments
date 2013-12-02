@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace AssignmentThreeGenerator
 {
-    class Declaration<T> : Statement
+    class Declaration : Statement
     {
-        //sigh, namespace issues... whenever they are printed the must be set to lower case, sigh
-        enum AccessModifiers {Public = 1, Private};
+        //sigh, namespace issues... whenever they are printed the must be set to lower case, sigh\
         int accessType;
-        Variable<T> toDeclare;
-        Expression<T> value;
+        Variable toDeclare;
+        Expression value;
 
-        public Declaration(Variable<T> toDeclare, Expression<T> value, int type)
+        public Declaration(Variable toDeclare, Expression value, int type)
         {
             this.value = value;
             this.toDeclare = toDeclare;
@@ -30,8 +29,8 @@ namespace AssignmentThreeGenerator
         public string ToString()
         {
             if (value == null)
-                return (accessType == 0 ? "" :Enum.GetName(typeof(AccessModifiers), accessType).ToLower() + " ") + toDeclare.ToString() + ";";
-            return toDeclare.ToString() + " = " + value.ToString() + ";" ;
+                return JavaHelper.getAccessModifier(accessType) + toDeclare.ToString();
+            return toDeclare.ToString() + " = " + value.ToString();
         }
     }
 }

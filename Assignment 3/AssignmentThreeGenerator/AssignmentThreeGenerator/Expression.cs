@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace AssignmentThreeGenerator
 {
-    class Expression<T>
+    class Expression
     {
         object value;
 
-        public Expression(T value)
+        public Expression(object value)
         {
             this.value = value;
         }
