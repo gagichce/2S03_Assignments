@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace AssignmentThreeGenerator
 {
-    class Record
+    class Function<T> : Statement 
     {
+        Type returnType;
+        string name;
+        List<Statement> body = new List<Statement>();
+
 
     }
 }

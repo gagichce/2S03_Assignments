@@ -1,0 +1,21 @@
+﻿using Nemerle;
+using Nemerle.Collections;
+using Nemerle.Text;
+using Nemerle.Utility;
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace AssignmentThreeGeneratorNemerle
+{
+  /// <summary>
+  /// Description of Class1.
+  /// </summary>
+  interface Statment
+  {
+      public toString() : string;
+      
+      
+  }
+}

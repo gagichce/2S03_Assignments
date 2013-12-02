@@ -41,9 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Add.cs" />
+    <Compile Include="Assignment.cs" />
+    <Compile Include="Declaration.cs" />
+    <Compile Include="Expression.cs" />
+    <Compile Include="Function.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Record.cs" />
+    <Compile Include="Return.cs" />
+    <Compile Include="Statement.cs" />
+    <Compile Include="Variable.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
