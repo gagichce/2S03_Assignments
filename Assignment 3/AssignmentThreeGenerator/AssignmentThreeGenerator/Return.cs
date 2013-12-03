@@ -8,18 +8,16 @@ namespace AssignmentThreeGenerator
 {
     class Return : Statement
     {
-        Type returnType;
-        Expression toReturn;
+        Variable value;
 
-        public Return(Expression toReturn)
+        public Return(Variable value)
         {
-            this.toReturn = toReturn;
-            this.returnType = toReturn.getType();
+            this.value = value;
         }
 
         public override string ToString()
         {
-            return "return " + toReturn.ToString() + ";";
+            return "return " + value.getName() + ";";
         }
     }
 }

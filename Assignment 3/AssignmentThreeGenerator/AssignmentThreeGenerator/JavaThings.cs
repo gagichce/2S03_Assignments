@@ -9,7 +9,7 @@ namespace AssignmentThreeGenerator
     static class JavaHelper
     {
         //namespace issues
-        public enum AccessModifiers { Public , Private };
+        public enum AccessModifiers { Default, Public, Private };
         public static Dictionary<Type, string> javaTypes = new Dictionary<Type, string>() 
         {
             {typeof(String), "String "}, 
@@ -19,13 +19,11 @@ namespace AssignmentThreeGenerator
             {typeof(long[]), "long[] "}
         };
 
-        public static string getAccessModifier(AccessModifiers accessType)
-        {
-            return (accessType == 0 ? "" : Enum.GetName(typeof(AccessModifiers), accessType).ToLower() + " ");
-        }
         public static string getFunctionAccessModifier(AccessModifiers accessType)
         {
-            return Enum.GetName(typeof(AccessModifiers), accessType).ToLower() + " ";
+            if (accessType != AccessModifiers.Default)
+                return Enum.GetName(typeof(AccessModifiers), accessType).ToLower() + " ";
+            return "";
         }
     }
 }

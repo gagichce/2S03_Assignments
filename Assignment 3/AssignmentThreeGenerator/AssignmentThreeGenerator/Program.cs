@@ -8,6 +8,16 @@ using System.Reflection;
 
 namespace AssignmentThreeGenerator
 {
+    class myVal
+    {
+        public object value;
+
+        public myVal(object value)
+        {
+            this.value = value;
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
@@ -21,13 +31,14 @@ namespace AssignmentThreeGenerator
 
             //Console.WriteLine("MethodInfo.Invoke() Example\n");
             //Console.WriteLine("MagicClass.ItsMagic() returned: {0}", magicValue);
+            Variable myString = new Variable(typeof(string), "myString");
 
-            Variable myString = new Variable("this", typeof(int));
-            Expression something = new Expression(new long[] {});
-            Declaration decs = new Declaration(myString, something);
-            Function myFunc = new Function(typeof(long[]), JavaHelper.AccessModifiers.Public, "makeStuffHappen");
+            Function myFunc = new Function(JavaHelper.AccessModifiers.Public, typeof(string), "makeStuffHappen");
             myFunc.setReturn(myString);
-            myFunc.addStatement(decs);
+            //myFunc.addStatement(decs);
+            List<myVal> myList = new List<myVal>();
+            myList.Add(new myVal(3L));
+            Console.WriteLine(myList[0].value);
             Console.WriteLine(myFunc.ToString());
             Console.ReadKey(true);
         }

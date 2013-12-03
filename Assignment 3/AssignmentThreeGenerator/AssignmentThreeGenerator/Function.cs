@@ -15,18 +15,22 @@ namespace AssignmentThreeGenerator
         private List<Declaration> myDecs = new List<Declaration>();
         private List<Statement> body = new List<Statement>();
 
-        public Function(Type returnType, JavaHelper.AccessModifiers accessModifer, string name)
+        public Function(JavaHelper.AccessModifiers accessModifer, Type returnType, string name)
         {
             this.name = name;
             this.returnType = returnType;
             this.accessType = accessModifer;
         }
 
-        public void setReturn(Expression myExpression)
+        public void addInput(Variable myVariable)
         {
-            if (returnType != typeof(void))
+
+        }
+        public void setReturn(Variable myVariable)
+        {
+            if (JavaHelper.AccessModifiers.Default != accessType)
             {
-                functionReturn = new Return(myExpression);
+                functionReturn = new Return(myVariable);
             }
         }
 

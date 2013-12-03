@@ -9,7 +9,7 @@ namespace AssignmentThreeGenerator
     class Class : Statement
     {
         private List<Function> functions = new List<Function>();
-        private List<Declaration> fieldVariables = new List<Declaration>();
+        //private List<Declaration> fieldVariables = new List<Declaration>();
 
         private string name;
         public Class(string name)
@@ -21,9 +21,9 @@ namespace AssignmentThreeGenerator
             functions.Add(toAdd);
         }
 
-        public void addDeclaration(Declaration myDec)
-        {
-            fieldVariables.Add(myDec);
-        }
+        //public void addDeclaration(Declaration myDec)
+        //{
+        //    fieldVariables.Add(myDec);
+        //}
     }
 }

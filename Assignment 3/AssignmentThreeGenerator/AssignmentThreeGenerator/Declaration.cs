@@ -6,42 +6,56 @@ using System.Threading.Tasks;
 
 namespace AssignmentThreeGenerator
 {
-    class Declaration : Statement
+    class Declaration : Variable
     {
         JavaHelper.AccessModifiers accessType;
-        private Variable toDeclare;
-        Expression value;
 
-        public Declaration(Variable toDeclare, Expression value, JavaHelper.AccessModifiers accessType)
+        public Declaration(JavaHelper.AccessModifiers accessType, string name, Type type)
+            : base(type, name)
         {
-            this.value = value;
-            this.toDeclare = toDeclare;
             this.accessType = accessType;
         }
 
-        public Declaration(Variable toDeclare)
+        public Declaration(string name, Type type)
+            : base(type, name)
         {
-            this.toDeclare = toDeclare;
-            this.accessType = 0;
+            this.accessType = JavaHelper.AccessModifiers.Default;
         }
 
-        public Declaration(Variable toDeclare, Expression value)
+        public Declaration(Variable myVariable)
+            :base(myVariable.getType(), myVariable.getName())
         {
-            this.value = value;
-            this.toDeclare = toDeclare;
-            this.accessType = 0;
+            this.accessType = JavaHelper.AccessModifiers.Default;
+        }
+        public Declaration(JavaHelper.AccessModifiers accessType, string name, Type type, object value)
+            : base(type, name, value)
+        {
+            this.accessType = accessType;
         }
 
         public Variable getVariable()
         {
-            return this.toDeclare;
+            return new Variable(base.type, base.name, base.getValue());
         }
 
         public override string ToString()
         {
-            if (value == null)
-                return JavaHelper.getAccessModifier(accessType) + toDeclare.ToString();
-            return toDeclare.ToString() + " = " + value.ToString();
+            string accessor = "";
+            if (JavaHelper.AccessModifiers.Default != accessType)
+                accessor = Enum.GetName(typeof(JavaHelper.AccessModifiers), accessType).ToLower() + " ";
+            string type = "";
+            type += JavaHelper.javaTypes[this.type] + " ";
+            string assignment = "";
+            if (base.getValue() != null)
+            {
+                assignment = " = " + base.getValue();
+            }
+            return accessor + type + base.name + assignment + ";";
+        }
+
+        public string ToFunctionString()
+        {
+            return JavaHelper.javaTypes[this.type] + " " + base.name;
         }
     }
 }

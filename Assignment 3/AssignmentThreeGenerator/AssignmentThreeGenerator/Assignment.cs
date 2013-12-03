@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace AssignmentThreeGenerator
 {
-    class Assignment : Statement
-    {
-        Variable toAssign;
-        Expression value;
+    //class Assignment<T> : Statement
+    //{
+    //    Variable<T> toAssign;
+    //    Expression value;
 
-        public Assignment(Variable toAssign, Expression value)
-        {
-            this.toAssign = toAssign;
-            this.value = value;
-        }
+    //    public Assignment(Variable<T> toAssign, Expression value)
+    //    {
+    //        this.toAssign = toAssign;
+    //        this.value = value;
+    //    }
 
-        public override string ToString()
-        {
-            return toAssign.ToString() + " = " + value.ToString() + ";";
-        }
-    }
+    //    public override string ToString()
+    //    {
+    //        return toAssign.ToString() + " = " + value.ToString() + ";";
+    //    }
+    //}
 }
