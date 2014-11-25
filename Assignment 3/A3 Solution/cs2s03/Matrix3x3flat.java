@@ -12,13 +12,7 @@ public class Matrix3x3flat extends Matrix{
 		this.matrix = new Record9(elems);
 	}
 
-	//create identity matrix
-	private Matrix3x3flat(){
-		this.matrix = new Record9();
-	}
-	
-	@Override
-	Matrix3x3flat smultiply(int n) throws NegativeExponent {
+	public Matrix3x3flat smultiply(int n) throws NegativeExponent {
 
 		if(n < 0){
 
@@ -26,13 +20,34 @@ public class Matrix3x3flat extends Matrix{
 		}
 		else if (n == 0){
 
-			return new Matrix3x3flat();
+			return GetIdentityMatrix();
 		}
 		else if(n == 1){
 
-			return this;
+			return this.Clone();
 		}
 		return new Matrix3x3flat();
+	}
+
+	public static Matrix3x3flat GetIdentityMatrix(){
+		return new Matrix3x3flat();
+	}
+
+	public Matrix3x3flat Clone() {
+		return new Matrix3x3flat(this);
+	}
+
+	/* Other constructors */
+
+	//const for identity matrix
+	private Matrix3x3flat(){
+		this.matrix = new Record9();
+	}
+	
+	//for creating clone, we already know that elems has 9 elements
+	private Matrix3x3flat(Matrix3x3flat matrixToClone){
+
+		this.matrix = matrixToClone.matrix.Clone();
 	}
 
 	class Record9{
