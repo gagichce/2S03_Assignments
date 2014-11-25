@@ -32,6 +32,7 @@ namespace AssignmentThreeGenerator
             //Console.WriteLine("MethodInfo.Invoke() Example\n");
             //Console.WriteLine("MagicClass.ItsMagic() returned: {0}", magicValue);
             Variable myString = new Variable(typeof(string), "myString");
+            //string myString;
 
             Function myFunc = new Function(JavaHelper.AccessModifiers.Public, typeof(string), "makeStuffHappen");
             myFunc.setReturn(myString);
