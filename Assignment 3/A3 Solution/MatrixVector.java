@@ -1,3 +1,5 @@
+package cs2s03;
+
 import java.util.Vector;
 
 public class MatrixVector {
