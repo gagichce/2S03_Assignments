@@ -1,6 +1,6 @@
 package cs2s03;
 
-class NegativeExponent extends Throwable {
+public class NegativeExponent extends Throwable {
     private int exp;
     private String name;
 

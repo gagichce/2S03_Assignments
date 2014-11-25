@@ -1,6 +1,6 @@
 package cs2s03;
 
-class WrongLength extends Throwable {
+public class WrongLength extends Throwable {
     private int len;
     private String name;
 

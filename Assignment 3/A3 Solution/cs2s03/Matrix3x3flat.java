@@ -4,7 +4,7 @@ public class Matrix3x3flat extends Matrix{
 
 	Record9 matrix;
 
-	Matrix3x3flat (long[] elems) throws WrongLength {
+	public Matrix3x3flat (long[] elems) throws WrongLength {
 		int len = elems.length;
 		if(len !=9) {
 			throw new WrongLength(len, this.getClass().getCanonicalName());
@@ -13,7 +13,7 @@ public class Matrix3x3flat extends Matrix{
 	}
 
 	//create identity matrix
-	Matrix3x3flat(){
+	private Matrix3x3flat(){
 		this.matrix = new Record9();
 	}
 	
@@ -28,7 +28,10 @@ public class Matrix3x3flat extends Matrix{
 
 			return new Matrix3x3flat();
 		}
+		else if(n == 1){
 
+			return this;
+		}
 		return new Matrix3x3flat();
 	}
 
@@ -59,6 +62,18 @@ public class Matrix3x3flat extends Matrix{
 		//default constructor for identity matrix.
 		Record9(){
 
+		}
+
+		public long[] GetElems(){
+			return new long[]{
+				this.row1col1, this.row1col2, this.row1col3,
+				this.row2col1, this.row2col2, this.row2col3,
+				this.row3col1, this.row3col2, this.row3col3
+			};
+		}
+
+		public Record9 Clone(){
+			return new Record9(this.GetElems());
 		}
 	}
 }
