@@ -8,6 +8,9 @@ public class mainRun {
 		myStack.push('d');
 		myStack.push('e');
 		myStack.push('f');
+		myStack.reverse(myStack.top);
+		myStack.show(System.out);
+		myStack.reverse(myStack.top);
 		myStack.show(System.out);
 		StringBuffer test = new StringBuffer();
 		myStack.show(test);

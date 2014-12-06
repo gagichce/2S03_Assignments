@@ -1,7 +1,7 @@
 import java.io.PrintStream;
 
 public class Stack implements StackInterface {
-	private List top;
+	public List top;
 
 	public Stack() {
 
@@ -18,6 +18,28 @@ public class Stack implements StackInterface {
 		if (isEmpty())
 			throw new ObjectIsEmpty("Stack is empty!");
 		return top.getValue();
+	}
+
+	public void reverse(List current){
+
+		//stack is empty
+		if(current == null) return;
+
+		//we have reached the end of the stack
+		if (current.getNext() == null) {this.top = current; return;}
+
+		reverse(current.getNext());
+		current.getNext().setNext(current);
+		current.setNext(null);
+		return;
+	}
+
+	public static void main(String[] args){
+
+		Stack myStack = new Stack('c');
+		myStack.push('a');
+		myStack.push('2');
+		//myStack.reverse();
 	}
 
 	public void pop() {

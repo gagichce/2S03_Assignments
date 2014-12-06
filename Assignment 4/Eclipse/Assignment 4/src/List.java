@@ -21,6 +21,10 @@ public class List {
 		this.next = l;
 	}
 	
+	public void setNext(List l){
+		this.next = l;
+	}
+
 	public void setValue(char c){
 		this.value = c;
 	}
